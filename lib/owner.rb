@@ -68,15 +68,12 @@ class Owner
   end
   
   def sell_pets
-    @pets[:dogs].select { |dog|
-      dog.mood = "nervous"
-    }
-    @pets[:cats].select { |cat|
-      cat.mood = "nervous"
-    }
-    @pets[:fishes].select { |fish|
-      fish.mood = "nervous"
-    }
+    @pets.each do |species, animals|
+      animals.each do |animal|
+        animal.mood = "nervous"
+      end
+      animals.clear
+    end
     @pets.clear
   end
   
